@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pencil_primary">#F4BE19</color>
+    <color name="pencil_primary_dark">#DDA600</color>
+    <color name="pencil_accent">#FF9800</color>
+    <color name="pencil_background">#FBF9F2</color>
+    <color name="pencil_surface">#FFFFFF</color>
+    <color name="pencil_dark">#262626</color>
+</resources>

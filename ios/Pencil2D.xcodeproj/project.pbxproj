@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000012C00000100000001 /* Pencil2DApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000012C00000100000001 /* Pencil2DApp.swift */; };
+		A10000022C00000100000001 /* CanvasRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000022C00000100000001 /* CanvasRatio.swift */; };
+		A10000032C00000100000001 /* DrawingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000032C00000100000001 /* DrawingTool.swift */; };
+		A10000042C00000100000001 /* DrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000042C00000100000001 /* DrawingLayer.swift */; };
+		A10000052C00000100000001 /* AnimationFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000052C00000100000001 /* AnimationFrame.swift */; };
+		A10000062C00000100000001 /* AnimationProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000062C00000100000001 /* AnimationProject.swift */; };
+		A10000072C00000100000001 /* OnionSkinConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000072C00000100000001 /* OnionSkinConfig.swift */; };
+		A10000082C00000100000001 /* ExportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000082C00000100000001 /* ExportOption.swift */; };
+		A10000092C00000100000001 /* PencilKitCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000092C00000100000001 /* PencilKitCanvasView.swift */; };
+		A10000102C00000100000001 /* FloodFillEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000102C00000100000001 /* FloodFillEngine.swift */; };
+		A10000112C00000100000001 /* FrameCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000112C00000100000001 /* FrameCompositor.swift */; };
+		A10000122C00000100000001 /* VideoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000122C00000100000001 /* VideoExporter.swift */; };
+		A10000132C00000100000001 /* GIFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000132C00000100000001 /* GIFExporter.swift */; };
+		A10000142C00000100000001 /* ProjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000142C00000100000001 /* ProjectStore.swift */; };
+		A10000152C00000100000001 /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000152C00000100000001 /* ProjectListViewModel.swift */; };
+		A10000162C00000100000001 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000162C00000100000001 /* EditorViewModel.swift */; };
+		A10000172C00000100000001 /* HomeGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000172C00000100000001 /* HomeGalleryView.swift */; };
+		A10000182C00000100000001 /* NewProjectSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000182C00000100000001 /* NewProjectSheet.swift */; };
+		A10000192C00000100000001 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000192C00000100000001 /* EditorView.swift */; };
+		A10000202C00000100000001 /* LayersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000202C00000100000001 /* LayersSheet.swift */; };
+		A10000212C00000100000001 /* ExportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000212C00000100000001 /* ExportSheet.swift */; };
+		A10000232C00000100000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10000232C00000100000001 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C10000012C00000100000001 /* Pencil2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pencil2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000012C00000100000001 /* Pencil2DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pencil2DApp.swift; sourceTree = "<group>"; };
+		B10000022C00000100000001 /* CanvasRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRatio.swift; sourceTree = "<group>"; };
+		B10000032C00000100000001 /* DrawingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTool.swift; sourceTree = "<group>"; };
+		B10000042C00000100000001 /* DrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingLayer.swift; sourceTree = "<group>"; };
+		B10000052C00000100000001 /* AnimationFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFrame.swift; sourceTree = "<group>"; };
+		B10000062C00000100000001 /* AnimationProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationProject.swift; sourceTree = "<group>"; };
+		B10000072C00000100000001 /* OnionSkinConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnionSkinConfig.swift; sourceTree = "<group>"; };
+		B10000082C00000100000001 /* ExportOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportOption.swift; sourceTree = "<group>"; };
+		B10000092C00000100000001 /* PencilKitCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvasView.swift; sourceTree = "<group>"; };
+		B10000102C00000100000001 /* FloodFillEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloodFillEngine.swift; sourceTree = "<group>"; };
+		B10000112C00000100000001 /* FrameCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameCompositor.swift; sourceTree = "<group>"; };
+		B10000122C00000100000001 /* VideoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoExporter.swift; sourceTree = "<group>"; };
+		B10000132C00000100000001 /* GIFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFExporter.swift; sourceTree = "<group>"; };
+		B10000142C00000100000001 /* ProjectStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStore.swift; sourceTree = "<group>"; };
+		B10000152C00000100000001 /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
+		B10000162C00000100000001 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		B10000172C00000100000001 /* HomeGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGalleryView.swift; sourceTree = "<group>"; };
+		B10000182C00000100000001 /* NewProjectSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectSheet.swift; sourceTree = "<group>"; };
+		B10000192C00000100000001 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		B10000202C00000100000001 /* LayersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayersSheet.swift; sourceTree = "<group>"; };
+		B10000212C00000100000001 /* ExportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportSheet.swift; sourceTree = "<group>"; };
+		B10000222C00000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D10000012C00000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E10000012C00000100000001 = {
+			isa = PBXGroup;
+			children = (
+				E10000022C00000100000001 /* Pencil2D */,
+				E10000032C00000100000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E10000022C00000100000001 /* Pencil2D */ = {
+			isa = PBXGroup;
+			children = (
+				E10000042C00000100000001 /* App */,
+				E10000052C00000100000001 /* Models */,
+				E10000062C00000100000001 /* DrawingEngine */,
+				E10000072C00000100000001 /* ExportEngine */,
+				E10000082C00000100000001 /* Storage */,
+				E10000092C00000100000001 /* ViewModels */,
+				E10000102C00000100000001 /* Views */,
+				B10000222C00000100000001 /* Info.plist */,
+				B10000232C00000100000001 /* Assets.xcassets */,
+			);
+			path = Pencil2D;
+			sourceTree = "<group>";
+		};
+		E10000032C00000100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C10000012C00000100000001 /* Pencil2D.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E10000042C00000100000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B10000012C00000100000001 /* Pencil2DApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E10000052C00000100000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B10000022C00000100000001 /* CanvasRatio.swift */,
+				B10000032C00000100000001 /* DrawingTool.swift */,
+				B10000042C00000100000001 /* DrawingLayer.swift */,
+				B10000052C00000100000001 /* AnimationFrame.swift */,
+				B10000062C00000100000001 /* AnimationProject.swift */,
+				B10000072C00000100000001 /* OnionSkinConfig.swift */,
+				B10000082C00000100000001 /* ExportOption.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E10000062C00000100000001 /* DrawingEngine */ = {
+			isa = PBXGroup;
+			children = (
+				B10000092C00000100000001 /* PencilKitCanvasView.swift */,
+				B10000102C00000100000001 /* FloodFillEngine.swift */,
+				B10000112C00000100000001 /* FrameCompositor.swift */,
+			);
+			path = DrawingEngine;
+			sourceTree = "<group>";
+		};
+		E10000072C00000100000001 /* ExportEngine */ = {
+			isa = PBXGroup;
+			children = (
+				B10000122C00000100000001 /* VideoExporter.swift */,
+				B10000132C00000100000001 /* GIFExporter.swift */,
+			);
+			path = ExportEngine;
+			sourceTree = "<group>";
+		};
+		E10000082C00000100000001 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B10000142C00000100000001 /* ProjectStore.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		E10000092C00000100000001 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B10000152C00000100000001 /* ProjectListViewModel.swift */,
+				B10000162C00000100000001 /* EditorViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E10000102C00000100000001 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B10000172C00000100000001 /* HomeGalleryView.swift */,
+				B10000182C00000100000001 /* NewProjectSheet.swift */,
+				B10000192C00000100000001 /* EditorView.swift */,
+				B10000202C00000100000001 /* LayersSheet.swift */,
+				B10000212C00000100000001 /* ExportSheet.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F10000012C00000100000001 /* Pencil2D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = G10000012C00000100000001 /* Build configuration list for PBXNativeTarget "Pencil2D" */;
+			buildPhases = (
+				H10000012C00000100000001 /* Sources */,
+				D10000012C00000100000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pencil2D;
+			productName = Pencil2D;
+			productReference = C10000012C00000100000001 /* Pencil2D.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		010000012C00000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F10000012C00000100000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = G10000022C00000100000001 /* Build configuration list for PBXProject "Pencil2D" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E10000012C00000100000001;
+			productRefGroup = E10000032C00000100000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F10000012C00000100000001 /* Pencil2D */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		R10000012C00000100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000232C00000100000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		H10000012C00000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000012C00000100000001 /* Pencil2DApp.swift in Sources */,
+				A10000022C00000100000001 /* CanvasRatio.swift in Sources */,
+				A10000032C00000100000001 /* DrawingTool.swift in Sources */,
+				A10000042C00000100000001 /* DrawingLayer.swift in Sources */,
+				A10000052C00000100000001 /* AnimationFrame.swift in Sources */,
+				A10000062C00000100000001 /* AnimationProject.swift in Sources */,
+				A10000072C00000100000001 /* OnionSkinConfig.swift in Sources */,
+				A10000082C00000100000001 /* ExportOption.swift in Sources */,
+				A10000092C00000100000001 /* PencilKitCanvasView.swift in Sources */,
+				A10000102C00000100000001 /* FloodFillEngine.swift in Sources */,
+				A10000112C00000100000001 /* FrameCompositor.swift in Sources */,
+				A10000122C00000100000001 /* VideoExporter.swift in Sources */,
+				A10000132C00000100000001 /* GIFExporter.swift in Sources */,
+				A10000142C00000100000001 /* ProjectStore.swift in Sources */,
+				A10000152C00000100000001 /* ProjectListViewModel.swift in Sources */,
+				A10000162C00000100000001 /* EditorViewModel.swift in Sources */,
+				A10000172C00000100000001 /* HomeGalleryView.swift in Sources */,
+				A10000182C00000100000001 /* NewProjectSheet.swift in Sources */,
+				A10000192C00000100000001 /* EditorView.swift in Sources */,
+				A10000202C00000100000001 /* LayersSheet.swift in Sources */,
+				A10000212C00000100000001 /* ExportSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		I10000012C00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Pencil2D/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pencil2d.animation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		I10000022C00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Pencil2D/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pencil2d.animation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		I10000032C00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		I10000042C00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		G10000012C00000100000001 /* Build configuration list for PBXNativeTarget "Pencil2D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				I10000012C00000100000001 /* Debug */,
+				I10000022C00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		G10000022C00000100000001 /* Build configuration list for PBXProject "Pencil2D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				I10000032C00000100000001 /* Debug */,
+				I10000042C00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 010000012C00000100000001 /* Project object */;
+}

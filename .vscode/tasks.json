@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1. Run Pencil 2D Studio Simulator (Port 3000)",
+      "type": "shell",
+      "command": "python -m http.server 3000 --directory preview",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "2. Open Simulator in Browser",
+      "type": "shell",
+      "command": "start http://localhost:3000",
+      "problemMatcher": []
+    },
+    {
+      "label": "3. Build Android APK (Gradle assembleDebug)",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/android"
+      },
+      "command": ".\\gradlew.bat assembleDebug",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "4. Install APK to Connected Device",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/android"
+      },
+      "command": "& 'C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe' install -r app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "problemMatcher": []
+    }
+  ]
+}

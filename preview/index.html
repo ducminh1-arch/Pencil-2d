@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pencil 2D - Draw & Animations Studio</title>
+  <meta name="description" content="Ứng dụng vẽ tay và làm hoạt hình 2D frame-by-frame chuyên nghiệp tương tự FlipaClip & Pencil 2D">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body class="mode-desktop">
+
+  <!-- ==================== MAIN APPLICATION WRAPPER ==================== -->
+  <div id="app-container" class="app-root">
+
+    <!-- Top Application Header Bar -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-logo" id="btn-brand-home" title="Về trang dự án">
+          <div class="logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+              <path d="m15 5 4 4"></path>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">Pencil 2D</span>
+            <span class="logo-badge">STUDIO</span>
+          </div>
+        </div>
+
+        <nav class="header-nav-tabs">
+          <button id="nav-tab-gallery" class="header-tab-btn active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Dự Án (Gallery)</span>
+          </button>
+          <button id="nav-tab-studio" class="header-tab-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+            <span>Bàn Vẽ (Studio)</span>
+          </button>
+        </nav>
+
+        <div class="project-title-badge" id="header-project-name" style="display: none;">
+          <span class="dot"></span>
+          <span id="header-project-title-text">Project 1</span>
+        </div>
+      </div>
+
+      <!-- Center Quick Controls (in Studio mode) -->
+      <div class="header-center" id="header-studio-controls">
+        <div class="quick-pill-group">
+          <button id="btn-header-undo" class="quick-tool-btn" title="Hoàn tác (Ctrl+Z)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+            <span>Undo</span>
+          </button>
+          <button id="btn-header-redo" class="quick-tool-btn" title="Làm lại (Ctrl+Y)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+            <span>Redo</span>
+          </button>
+          <div class="pill-divider"></div>
+          <button id="btn-header-onion" class="quick-tool-btn active" title="Bật/Tắt Onion Skin (O)">
+            <span class="onion-emoji">🧅</span>
+            <span>Onion Skin</span>
+          </button>
+          <button id="btn-header-grid" class="quick-tool-btn" title="Bật/Tắt lưới vẽ ô ly (G)">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="16" y2="21"></line><line x1="3" y1="8" x2="21" y2="8"></line><line x1="3" y1="16" x2="21" y2="16"></line></svg>
+            <span>Grid</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Action Controls -->
+      <div class="header-right">
+        <!-- View Mode Switcher: Desktop Web App vs Phone Frame Preview -->
+        <div class="view-mode-toggle" title="Chuyển chế độ xem">
+          <button id="btn-mode-desktop" class="mode-btn active" title="Giao diện Web App tràn màn hình">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span>Full App</span>
+          </button>
+          <button id="btn-mode-mobile" class="mode-btn" title="Mô phỏng màn hình iPhone / Android">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            <span>Phone</span>
+          </button>
+        </div>
+
+        <button id="btn-header-new-project" class="btn-primary-action">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>New Project</span>
+        </button>
+
+        <button id="btn-header-export" class="btn-accent-action" style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Export Video</span>
+        </button>
+
+        <button id="btn-header-save-photo" class="btn-accent-blue-action" style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Save PNG</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== BODY WRAPPER ==================== -->
+    <main class="app-main-viewport">
+
+      <!-- ==================== VIEW 1: PROJECTS GALLERY ==================== -->
+      <section id="view-gallery" class="view-panel active">
+        <div class="gallery-container">
+          
+          <!-- Banner Hero -->
+          <div class="gallery-hero-banner">
+            <div class="hero-content">
+              <h1 class="hero-title">Bộ Sưu Tập Hoạt Hình 2D</h1>
+              <p class="hero-subtitle">Vẽ tay từng khung hình (frame-by-frame) cực mượt, hỗ trợ Onion Skinning & xuất video MP4</p>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-badge">
+                <span class="stat-val" id="stat-project-count">8</span>
+                <span class="stat-label">Dự án mẫu</span>
+              </div>
+              <div class="stat-badge">
+                <span class="stat-val">8 FPS</span>
+                <span class="stat-label">Chuẩn Flipbook</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Filter Tabs -->
+          <div class="gallery-section-head">
+            <div class="gallery-tabs-filter">
+              <button class="filter-tab-btn active" data-filter="all" id="filter-all">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span>Tất Cả (Tất cả dự án)</span>
+              </button>
+              <button class="filter-tab-btn" data-filter="image" id="filter-image">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>🖼️ Tranh Vẽ & Ảnh (Photos)</span>
+              </button>
+              <button class="filter-tab-btn" data-filter="video" id="filter-video">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                <span>🎬 Hoạt Hình (Videos / GIFs)</span>
+              </button>
+            </div>
+            <div class="gallery-actions">
+              <span class="gallery-tip">💡 Hover thẻ để xem trước hoạt hình</span>
+              <button id="btn-import-photo" class="btn-outline-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Nhập Ảnh</span>
+              </button>
+              <input type="file" id="input-import-photo-file" accept="image/*" style="display:none;">
+            </div>
+          </div>
+
+          <div id="projects-grid" class="projects-responsive-grid">
+            <!-- Project Cards dynamically injected via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 2: ANIMATION STUDIO WORKSPACE ==================== -->
+      <section id="view-studio" class="view-panel">
+        
+        <div class="studio-layout">
+
+          <!-- 1. LEFT TOOLBAR: Drawing Tools & Brushes -->
+          <aside class="studio-sidebar-tools">
+            <div class="tools-group">
+              <button class="tool-btn active" data-tool="brush" id="tool-brush" title="Bút vẽ mượt (B)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+                <span class="tool-label">Brush</span>
+              </button>
+
+              <button class="tool-btn" data-tool="pencil" id="tool-pencil" title="Bút chì phác thảo (P)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                <span class="tool-label">Pencil</span>
+              </button>
+
+              <button class="tool-btn" data-tool="eraser" id="tool-eraser" title="Tẩy / Xóa nét (E)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 20H7L3 16C2 15 2 13 3 12L13 2L22 11L20 20Z"></path><line x1="7" y1="16" x2="16" y2="7"></line></svg>
+                <span class="tool-label">Eraser</span>
+              </button>
+
+              <button class="tool-btn" data-tool="bucket" id="tool-bucket" title="Đổ màu vùng kín Flood Fill (F)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 11-8-8-8.5 8.5a5 5 0 0 0 7 7l8.5-8.5Z"></path><path d="m5 2 5 5"></path><path d="M2 13h15"></path><path d="M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.6 2-4 .3 1.4 2 2.4 2 4Z"></path></svg>
+                <span class="tool-label">Fill</span>
+              </button>
+
+              <!-- Import Photo Button in Studio -->
+              <button class="tool-btn tool-btn-wide" id="btn-studio-import-photo" title="Chèn ảnh từ máy tính để vẽ lên hoặc đồ nét">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span class="tool-label">Chèn Ảnh Nền</span>
+                <input type="file" id="input-studio-import-photo-file" accept="image/*" style="display: none;">
+              </button>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Brush Size Control with Dynamic Visual Preview Dot -->
+            <div class="tool-property-block">
+              <div class="prop-label-row">
+                <span class="prop-title">Kích Thước</span>
+                <span id="brush-size-text" class="prop-val">10px</span>
+              </div>
+              <input type="range" id="brush-size-slider" class="app-range-slider" min="2" max="60" value="10">
+              <div class="brush-preview-dot-wrap">
+                <div id="brush-preview-dot" class="brush-preview-dot" style="width: 10px; height: 10px;"></div>
+              </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Studio Color Palette -->
+            <div class="tool-property-block">
+              <div class="prop-label-row">
+                <span class="prop-title">Màu Sắc</span>
+                <div class="custom-color-btn-wrap" title="Chọn màu tự do">
+                  <input type="color" id="native-color-input" value="#1F1F1F">
+                  <div id="custom-color-preview" class="color-preview-circle"></div>
+                </div>
+              </div>
+
+              <div class="swatches-grid">
+                <button class="swatch-btn active" data-color="#1F1F1F" style="background: #1F1F1F;" title="Đen"></button>
+                <button class="swatch-btn" data-color="#FF2D55" style="background: #FF2D55;" title="Hồng Đỏ"></button>
+                <button class="swatch-btn" data-color="#4F75FF" style="background: #4F75FF;" title="Xanh Dương"></button>
+                <button class="swatch-btn" data-color="#7C4DFF" style="background: #7C4DFF;" title="Tím"></button>
+                <button class="swatch-btn" data-color="#26A69A" style="background: #26A69A;" title="Xanh Ngọc"></button>
+                <button class="swatch-btn" data-color="#FB8C00" style="background: #FB8C00;" title="Cam"></button>
+                <button class="swatch-btn" data-color="#F4BE19" style="background: #F4BE19;" title="Vàng"></button>
+                <button class="swatch-btn" data-color="#FFFFFF" style="background: #FFFFFF; border: 1px solid #ccc;" title="Trắng"></button>
+              </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Clear Canvas Button -->
+            <button id="btn-clear-canvas" class="btn-tool-secondary" title="Xóa toàn bộ nội dung khung hiện tại">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              <span>Xóa Khung</span>
+            </button>
+          </aside>
+
+          <!-- 2. CENTER CANVAS WORKSPACE -->
+          <div class="studio-canvas-stage" id="canvas-stage-wrapper">
+            
+            <div class="canvas-floating-toolbar">
+              <div class="floating-left">
+                <span id="canvas-ratio-badge" class="ratio-badge">1:1 Square</span>
+                <span id="frame-counter-badge" class="frame-counter-badge">Frame 2 / 4</span>
+              </div>
+              <div class="floating-right">
+                <button id="btn-zoom-out" class="mini-icon-btn" title="Thu nhỏ (-)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <span id="zoom-level-text" class="zoom-text">100%</span>
+                <button id="btn-zoom-in" class="mini-icon-btn" title="Phóng to (+)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <button id="btn-zoom-reset" class="mini-text-btn" title="Căn chỉnh vừa màn hình">Fit</button>
+              </div>
+            </div>
+
+            <!-- Canvas Viewport with Auto Centering & Ratio Sizing -->
+            <div class="canvas-paper-shadow" id="canvas-paper-card">
+              <!-- Grid overlay (optional) -->
+              <div id="canvas-grid-overlay" class="canvas-grid-overlay"></div>
+
+              <!-- Onion Skin Previous Frame (Red tint) -->
+              <canvas id="onion-canvas" class="studio-canvas-layer onion-layer"></canvas>
+
+              <!-- Main Background Canvas -->
+              <canvas id="bg-canvas" class="studio-canvas-layer bg-layer"></canvas>
+
+              <!-- Active Interactive Drawing Canvas -->
+              <canvas id="drawing-canvas" class="studio-canvas-layer drawing-layer"></canvas>
+
+              <!-- Center Big Play Button Overlay (Matching App Store "ENJOY YOUR CREATIVITY") -->
+              <div id="center-play-overlay" class="center-play-overlay">
+                <button id="btn-center-play" class="center-play-circle" title="Phát hoạt hình (Phím Space)">
+                  <svg id="center-play-icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                  <svg id="center-pause-icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 3. RIGHT SETTINGS & LAYERS PANEL -->
+          <aside class="studio-sidebar-settings">
+            
+            <!-- Canvas Aspect Ratio Section ("MULTIPLE CANVAS SIZES") -->
+            <div class="panel-section">
+              <div class="section-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                <span>Tỷ Lệ Khung Vẽ</span>
+              </div>
+              <div class="ratio-options-list">
+                <button class="ratio-option-btn active" data-ratio="1:1">
+                  <div class="ratio-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+                  </div>
+                  <div class="ratio-details">
+                    <strong>1:1 Square</strong>
+                    <small>Instagram, Post, Icon</small>
+                  </div>
+                </button>
+
+                <button class="ratio-option-btn" data-ratio="9:16">
+                  <div class="ratio-icon">
+                    <svg width="16" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="3" ry="3"></rect><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon></svg>
+                  </div>
+                  <div class="ratio-details">
+                    <strong>9:16 Vertical</strong>
+                    <small>TikTok, Reels, Shorts</small>
+                  </div>
+                </button>
+
+                <button class="ratio-option-btn" data-ratio="16:9">
+                  <div class="ratio-icon">
+                    <svg width="20" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="4" ry="4"></rect><polygon points="10 9 15 12 10 15 10 9" fill="currentColor"></polygon></svg>
+                  </div>
+                  <div class="ratio-details">
+                    <strong>16:9 Cinema</strong>
+                    <small>YouTube, TV, Web</small>
+                  </div>
+                </button>
+
+                <button class="ratio-option-btn" data-ratio="4:3">
+                  <div class="ratio-icon">
+                    <svg width="18" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="3" ry="3"></rect></svg>
+                  </div>
+                  <div class="ratio-details">
+                    <strong>4:3 Classic</strong>
+                    <small>iPad, Flipbook</small>
+                  </div>
+                </button>
+
+                <button class="ratio-option-btn" data-ratio="4:5">
+                  <div class="ratio-icon">
+                    <svg width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="1" width="18" height="22" rx="4" ry="4"></rect></svg>
+                  </div>
+                  <div class="ratio-details">
+                    <strong>4:5 Portrait</strong>
+                    <small>Instagram Feed</small>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Onion Skin Configuration -->
+            <div class="panel-section">
+              <div class="section-header">
+                <span class="header-icon">🧅</span>
+                <span>Cài Đặt Onion Skin</span>
+              </div>
+              <div class="onion-controls-wrap">
+                <div class="toggle-row">
+                  <span>Bật bóng mờ (Frames)</span>
+                  <label class="switch-toggle">
+                    <input type="checkbox" id="toggle-onion-checkbox" checked>
+                    <span class="slider-toggle"></span>
+                  </label>
+                </div>
+                <div class="onion-legend">
+                  <div class="legend-item"><span class="legend-color red"></span> Frame trước (Đỏ)</div>
+                  <div class="legend-item"><span class="legend-color green"></span> Frame sau (Xanh lá)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Actions -->
+            <div class="panel-section">
+              <div class="section-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <span>Hành Động</span>
+              </div>
+              <button id="btn-export-trigger-side" class="btn-export-gradient">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Xuất Video Hoạt Hình</span>
+              </button>
+              <button id="btn-save-photo-side" class="btn-save-photo-gradient" style="display: none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Lưu & Tải Ảnh PNG</span>
+              </button>
+            </div>
+
+          </aside>
+
+        </div>
+
+        <!-- 4b. PHOTO DRAWING BOTTOM DOCK (Only visible in Photo Mode) -->
+        <footer class="studio-photo-dock" id="studio-photo-dock" style="display: none;">
+          <div class="photo-dock-left">
+            <span class="photo-mode-badge">🖼️ PHOTO & ART</span>
+            <span class="photo-dock-desc">Single frame canvas • Draw, sketch, and edit photos</span>
+          </div>
+          <div class="photo-dock-actions">
+            <button id="btn-photo-dock-import" class="btn-dock-action" title="Import photo to background">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>Replace Photo</span>
+            </button>
+            <button id="btn-photo-dock-save" class="btn-dock-action btn-dock-primary" title="Save PNG image">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Save PNG</span>
+            </button>
+            <button id="btn-photo-convert-anim" class="btn-dock-action" title="Convert to animation">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              <span>Convert to Animation</span>
+            </button>
+          </div>
+        </footer>
+
+        <!-- 4. BOTTOM TIMELINE DOCK (Professional Multi-frame Scrubber) -->
+        <footer class="studio-timeline-dock" id="studio-timeline-dock">
+          
+          <!-- Playback Controls -->
+          <div class="timeline-playback-bar">
+            <button id="timeline-play-btn" class="timeline-main-play-btn" title="Phát / Dừng (Space)">
+              <svg id="time-play-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="7 4 19 12 7 20 7 4"></polygon></svg>
+              <svg id="time-pause-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            </button>
+
+            <!-- Loop Toggle -->
+            <button id="btn-loop-toggle" class="timeline-loop-btn active" title="Lặp lại vô tận (Loop)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+              <span>Lặp</span>
+            </button>
+
+            <!-- FPS Selector -->
+            <div class="fps-picker-wrap">
+              <span class="fps-label">Tốc độ:</span>
+              <div class="fps-tags-group">
+                <button class="fps-chip" data-fps="6">6</button>
+                <button class="fps-chip active" data-fps="8">8</button>
+                <button class="fps-chip" data-fps="12">12</button>
+                <button class="fps-chip" data-fps="24">24</button>
+              </div>
+              <span class="fps-unit">fps</span>
+            </div>
+
+            <!-- Frame Actions (Duplicate, Delete) -->
+            <div class="frame-management-btns">
+              <button id="btn-duplicate-frame" class="btn-frame-action" title="Nhân bản khung hiện tại">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Nhân bản</span>
+              </button>
+              <button id="btn-delete-frame" class="btn-frame-action btn-danger" title="Xóa khung hiện tại">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span>Xóa</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Horizontal Frames Thumbnail Strip -->
+          <div class="timeline-frames-track">
+            <div id="timeline-frames-scroll" class="timeline-frames-scroll">
+              <!-- Frame items generated dynamically with live preview canvas -->
+            </div>
+
+            <!-- Big + Add Frame Button -->
+            <button id="btn-add-frame-plus" class="timeline-add-frame-btn" title="Thêm khung hình mới (+)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Khung Mới</span>
+            </button>
+          </div>
+
+        </footer>
+
+      </section>
+
+    </main>
+
+    <!-- ==================== EXPORT MODAL ==================== -->
+    <div id="export-modal" class="modal-backdrop" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <div class="modal-icon">📤</div>
+            <div>
+              <h3>Xuất File (Ảnh, GIF & Video)</h3>
+              <p>Chọn định dạng ảnh tĩnh, ảnh động GIF hoặc video để lưu về máy</p>
+            </div>
+          </div>
+          <button id="btn-close-export" class="modal-close-btn">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="export-cards-grid">
+            <button id="btn-export-png" class="export-card-btn active">
+              <div class="card-icon-tag img-tag">🖼️ Ảnh PNG / JPEG</div>
+              <h4>Xuất Ảnh Độ Phân Giải Cao</h4>
+              <p>Lưu bức tranh hoặc khung vẽ hiện tại dưới dạng tệp ảnh sắc nét (PNG chất lượng gốc)</p>
+            </button>
+
+            <button id="btn-export-gif" class="export-card-btn">
+              <div class="card-icon-tag gif-tag">🎞️ Ảnh Động GIF</div>
+              <h4>Xuất Ảnh Động GIF</h4>
+              <p>Tệp ảnh GIF chuyển động nhẹ nhàng, dễ dàng gửi qua Zalo, Messenger, làm sticker</p>
+            </button>
+
+            <button id="btn-export-mp4" class="export-card-btn">
+              <div class="card-icon-tag video-tag">🎬 Video MP4 / WebM</div>
+              <h4>Xuất Video Hoạt Hình</h4>
+              <p>Video chuyển động mượt mà với số khung hình và tốc độ FPS đã chọn</p>
+            </button>
+          </div>
+
+          <!-- Progress indicator during export -->
+          <div id="export-progress-wrap" class="export-progress-wrap" style="display: none;">
+            <div class="progress-bar-bg">
+              <div id="export-progress-bar" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <span id="export-status-label" class="export-status-label">Đang chuẩn bị tệp...</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btn-cancel-export-modal" class="btn-modal-cancel">Hủy</button>
+          <button id="btn-confirm-export" class="btn-modal-confirm">Bắt Đầu Tải Xuống</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== NEW PROJECT MODAL ==================== -->
+    <div id="new-project-modal" class="modal-backdrop" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <div class="modal-icon">✨</div>
+            <div>
+              <h3>Tạo Dự Án Mới</h3>
+              <p>Chọn loại dự án: Hoạt hình chuyển động hoặc Tranh vẽ / Ảnh</p>
+            </div>
+          </div>
+          <button id="btn-close-new-project" class="modal-close-btn">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Loại Dự Án:</label>
+            <div class="project-type-selector">
+              <label class="type-radio-card active" id="type-opt-animation">
+                <input type="radio" name="new-type" value="animation" checked>
+                <div class="type-icon">🎬</div>
+                <div class="type-text">
+                  <strong>Hoạt Hình (Animation)</strong>
+                  <small>Vẽ nhiều khung hình, có timeline chuyển động</small>
+                </div>
+              </label>
+
+              <label class="type-radio-card" id="type-opt-image">
+                <input type="radio" name="new-type" value="image">
+                <div class="type-icon">🖼️</div>
+                <div class="type-text">
+                  <strong>Tranh Vẽ & Ảnh (Drawing / Photo)</strong>
+                  <small>Vẽ tranh tĩnh hoặc chèn ảnh từ máy để vẽ lên</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="input-new-project-title">Tên Dự Án:</label>
+            <input type="text" id="input-new-project-title" class="app-text-input" placeholder="Ví dụ: Bức vẽ hoàng hôn..." value="Dự án mới">
+          </div>
+
+          <div class="form-group">
+            <label>Tỷ Lệ Màn Hình:</label>
+            <div class="new-project-ratios">
+              <label class="ratio-radio-card active">
+                <input type="radio" name="new-ratio" value="1:1" checked>
+                <span>1:1 Vuông</span>
+                <small>Instagram, Post</small>
+              </label>
+              <label class="ratio-radio-card">
+                <input type="radio" name="new-ratio" value="9:16">
+                <span>9:16 Dọc</span>
+                <small>TikTok, Reels</small>
+              </label>
+              <label class="ratio-radio-card">
+                <input type="radio" name="new-ratio" value="16:9">
+                <span>16:9 Ngang</span>
+                <small>YouTube</small>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="btn-cancel-new-project" class="btn-modal-cancel">Hủy</button>
+          <button id="btn-submit-new-project" class="btn-modal-confirm">Tạo Ngay</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="toast-notification"></div>
+
+  </div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>

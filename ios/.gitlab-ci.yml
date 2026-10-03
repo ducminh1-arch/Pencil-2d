@@ -1,0 +1,35 @@
+stages:
+  - build
+
+variables:
+  DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+
+build_ios_app:
+  stage: build
+  tags:
+    - saas-macos-medium-m1
+    - macos
+  rules:
+    - if: '$CI_COMMIT_BRANCH || $CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "push"'
+  before_script:
+    - xcodebuild -version
+  script:
+    - echo "=== Building Pencil2D Xcode Archive ==="
+    - xcodebuild clean archive -project Pencil2D.xcodeproj -scheme Pencil2D -configuration Release -archivePath build/Pencil2D.xcarchive -destination "generic/platform=iOS" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+    - echo "=== Packaging unsigned IPA ==="
+    - mkdir -p build/Payload
+    - cp -r build/Pencil2D.xcarchive/Products/Applications/Pencil2D.app build/Payload/
+    - cd build && zip -r Pencil2D.ipa Payload
+    - cd ..
+    - echo "=== Building for iOS Simulator (Appetize.io Web Simulator) ==="
+    - xcodebuild -project Pencil2D.xcodeproj -scheme Pencil2D -configuration Debug -sdk iphonesimulator -derivedDataPath build/derivedData CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+    - cd build/derivedData/Build/Products/Debug-iphonesimulator
+    - zip -r ../../../../build/Pencil2D-Simulator.app.zip Pencil2D.app
+    - cd ../../../..
+  artifacts:
+    name: "Pencil2D-iOS-Build-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - build/Pencil2D.ipa
+      - build/Pencil2D-Simulator.app.zip
+    expire_in: 14 days
+
